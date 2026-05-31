@@ -5,11 +5,12 @@ import { motion } from "framer-motion";
 import ProgressBar from "./ProgressBar";
 import { Course } from "@/types/course";
 import { tileVariant } from "./BentoGrid";
+import { LucideIcon } from "lucide-react";
+
+const iconMap = Icons as unknown as Record<string, LucideIcon>;
 
 export default function CourseCard({ course }: { course: Course }) {
-  const DynamicIcon =
-    (Icons as Record<string, Icons.LucideIcon>)[course.icon_name] ??
-    Icons.BookOpen;
+  const DynamicIcon = iconMap[course.icon_name] ?? Icons.BookOpen;
 
   return (
     <motion.article
@@ -26,12 +27,15 @@ export default function CourseCard({ course }: { course: Course }) {
       }}
       className="relative overflow-hidden rounded-3xl border border-zinc-800 bg-zinc-900 p-6"
     >
+      {/* Hover glow overlay */}
       <motion.div
         initial={{ opacity: 0 }}
         whileHover={{ opacity: 1 }}
         transition={{ duration: 0.25 }}
         className="pointer-events-none absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10"
       />
+
+      {/* Noise texture */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.03]"
         style={{
@@ -40,6 +44,8 @@ export default function CourseCard({ course }: { course: Course }) {
           backgroundSize: "128px 128px",
         }}
       />
+
+      {/* Content */}
       <header className="relative z-10">
         <DynamicIcon className="mb-4 h-8 w-8 text-blue-400" />
 
@@ -49,7 +55,9 @@ export default function CourseCard({ course }: { course: Course }) {
 
         <ProgressBar progress={course.progress} />
 
-        <p className="mt-2 text-sm text-zinc-400">{course.progress}% Complete</p>
+        <p className="mt-2 text-sm text-zinc-400">
+          {course.progress}% Complete
+        </p>
       </header>
     </motion.article>
   );
