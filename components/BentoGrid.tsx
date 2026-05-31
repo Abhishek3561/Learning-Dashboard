@@ -1,4 +1,4 @@
-import { Variants } from "framer-motion";
+import { Variants,motion } from "framer-motion";
 
 export const tileVariant: Variants = {
   hidden: {
