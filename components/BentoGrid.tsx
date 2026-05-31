@@ -1,6 +1,4 @@
-"use client";
-
-import { motion, Variants } from "framer-motion";
+import { Variants } from "framer-motion";
 
 export const tileVariant: Variants = {
   hidden: {
@@ -11,7 +9,7 @@ export const tileVariant: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      type: "spring",
+      type: "spring" as const,
       stiffness: 300,
       damping: 20,
     },
