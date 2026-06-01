@@ -23,7 +23,6 @@ export default async function Home() {
       <div className="grid grid-cols-1 lg:grid-cols-[260px_1fr]">
         <Sidebar />
         <main className="p-6 pb-24 md:pb-6">
-          {/* ✅ Server fetches data, Client component handles all Framer Motion */}
           <DashboardShell courses={courses ?? []} />
         </main>
       </div>
